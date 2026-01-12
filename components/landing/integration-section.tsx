@@ -14,6 +14,12 @@ const calendarEvents = [
   { time: "4:00 PM", event: "Review Meeting", color: "purple" },
 ];
 
+/**
+ * Map a color key to its corresponding Tailwind CSS background utility class.
+ *
+ * @param color - The color identifier to map (e.g., "blue", "green", "emerald", "purple")
+ * @returns The Tailwind `bg-...` class for the given color; returns `bg-zinc-500` for unknown keys.
+ */
 function getColorClass(color: string) {
   switch (color) {
     case "blue":
