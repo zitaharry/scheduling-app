@@ -54,7 +54,7 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --primary: oklch(0.623 0.214 259.815);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -65,7 +65,7 @@
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --ring: oklch(0.623 0.214 259.815);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -73,7 +73,7 @@
   --chart-5: oklch(0.769 0.188 70.08);
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary: oklch(0.623 0.214 259.815);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
@@ -122,4 +122,110 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* React Big Calendar - minimal overrides */
+.rbc-calendar {
+  font-family: inherit;
+}
+
+.rbc-event {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: 4px;
+}
+
+/* Increase time slot height for better visibility */
+.rbc-timeslot-group {
+  min-height: 80px; /* Default is ~40px, doubling it */
+}
+
+.rbc-time-slot {
+  min-height: 20px; /* Each 15-min slot */
+}
+
+/* Hide all-day section - not needed for availability */
+.rbc-allday-cell {
+  display: none;
+}
+/* Day headers in week/day views */
+.rbc-time-view .rbc-row.rbc-time-header-cell .rbc-header,
+.rbc-time-view .rbc-header {
+  border-bottom: 1px solid var(--border) !important;
+  padding: 16px 8px !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+}
+
+/* Mobile responsive calendar styles */
+@media (max-width: 640px) {
+  /* Reduce slot height on mobile */
+  .rbc-timeslot-group {
+    min-height: 60px;
+  }
+
+  .rbc-time-slot {
+    min-height: 15px;
+  }
+
+  /* Consistent time gutter width on mobile */
+  .rbc-time-gutter,
+  .rbc-time-header-gutter {
+    min-width: 50px !important;
+    max-width: 50px !important;
+    flex: 0 0 50px !important;
+  }
+
+  .rbc-time-gutter .rbc-label {
+    font-size: 0.65rem;
+    padding: 0 4px;
+  }
+
+  /* Smaller day headers */
+  .rbc-time-view .rbc-header {
+    font-size: 0.7rem !important;
+    padding: 8px 2px !important;
+  }
+
+  /* Compact events on mobile */
+  .rbc-event {
+    font-size: 0.65rem;
+    padding: 1px 3px;
+  }
+
+  .rbc-event-label {
+    font-size: 0.6rem;
+  }
+
+  /* Month view adjustments */
+  .rbc-month-view .rbc-date-cell {
+    font-size: 0.75rem;
+    padding: 2px;
+  }
+
+  .rbc-month-row {
+    min-height: 60px;
+  }
+
+  /* Touch-friendly resize handles */
+  .rbc-addons-dnd .rbc-addons-dnd-resize-ns-anchor {
+    height: 12px;
+  }
+
+  /* Smaller show more button */
+  .rbc-show-more {
+    font-size: 0.65rem;
+  }
+}
+
+/* Clerk Pricing Table and Modal z-index fixes */
+.cl-pricingTableCardPeriodToggle label,
+.cl-pricingTableCardPeriodToggle span {
+  color: white;
+}
+
+/* Any div with role="dialog" from Clerk */
+div[role="dialog"],
+div[role="alertdialog"] {
+  z-index: 99999 !important;
 }
