@@ -4,9 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecd52661-3358-4495-ba84-384e2099b8d5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/landing/feature-card.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/landing/features-section.tsx" afterDir="false" />
+    <list default="true" id="ecd52661-3358-4495-ba84-384e2099b8d5" name="Changes" comment="Workspace fix">
+      <change afterPath="$PROJECT_DIR$/app/(app)/availability/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(app)/settings/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/app-header.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/calendar/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/features.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sanity/queries/users.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sanity/schemaTypes/availabilitySlotType.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sanity/schemaTypes/bookingType.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sanity/schemaTypes/connectedAccountType.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sanity/schemaTypes/feedbackType.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sanity/schemaTypes/meetingTypeType.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sanity/schemaTypes/userType.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(app)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sanity/schemaTypes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sanity/schemaTypes/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +32,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "zitaharry"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/zitaharry/scheduling-app.git",
+    "accountId": "6181c61f-b09c-4734-9908-3b060e29ea94"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -35,7 +63,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "sanity-schemas",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "junie.onboarding.icon.badge.shown": "true",
@@ -82,10 +110,24 @@
       <updated>1768230131962</updated>
       <workItem from="1768230132758" duration="1318000" />
       <workItem from="1768235004899" duration="347000" />
+      <workItem from="1768324396730" duration="1565000" />
     </task>
+    <task id="LOCAL-00001" summary="Workspace fix">
+      <option name="closed" value="true" />
+      <created>1768237273187</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1768237273187</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Workspace fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Workspace fix" />
   </component>
 </project>
