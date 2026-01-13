@@ -5,24 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecd52661-3358-4495-ba84-384e2099b8d5" name="Changes" comment="Workspace fix">
-      <change afterPath="$PROJECT_DIR$/app/(app)/availability/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(app)/settings/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/app-header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/calendar/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/features.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sanity/queries/users.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sanity/schemaTypes/availabilitySlotType.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sanity/schemaTypes/bookingType.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sanity/schemaTypes/connectedAccountType.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sanity/schemaTypes/feedbackType.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sanity/schemaTypes/meetingTypeType.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sanity/schemaTypes/userType.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(app)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sanity/schemaTypes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sanity/schemaTypes/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +93,7 @@
       <updated>1768230131962</updated>
       <workItem from="1768230132758" duration="1318000" />
       <workItem from="1768235004899" duration="347000" />
-      <workItem from="1768324396730" duration="1565000" />
+      <workItem from="1768324396730" duration="2264000" />
     </task>
     <task id="LOCAL-00001" summary="Workspace fix">
       <option name="closed" value="true" />
