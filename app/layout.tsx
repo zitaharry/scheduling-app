@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/themes/theme-provider";
+import { SanityLive } from "@/sanity/lib/live";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +37,10 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <main>
+              {children}
+              <SanityLive />
+            </main>
           </ThemeProvider>
         </body>
       </html>
