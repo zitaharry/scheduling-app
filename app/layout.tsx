@@ -20,6 +20,12 @@ export const metadata: Metadata = {
   description: "Schedule meetings effortlessly",
 };
 
+/**
+ * Root application layout that supplies authentication context, global fonts, and theming, and renders page content alongside the SanityLive editor.
+ *
+ * @param children - Page content to render inside the layout
+ * @returns A JSX element representing the application's root layout
+ */
 export default function RootLayout({
   children,
 }: Readonly<{

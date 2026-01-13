@@ -20,7 +20,9 @@ export const PLAN_LIMITS = {
 } as const;
 
 /**
- * Get the current user's plan based on Clerk subscription
+ * Determine the current user's subscription plan from Clerk authentication.
+ *
+ * @returns `pro` if the user has an active "pro" plan, `starter` if the user has an active "starter" plan, `free` otherwise.
  */
 export async function getUserPlan(): Promise<PlanType> {
   const { has } = await auth();
@@ -31,7 +33,9 @@ export async function getUserPlan(): Promise<PlanType> {
 }
 
 /**
- * Get the plan limits for the current user
+ * Retrieve the current user's subscription plan and its associated limits.
+ *
+ * @returns An object with `maxConnectedCalendars`, `maxBookingsPerMonth`, and `plan` indicating the current plan and its limits.
  */
 export async function getUserPlanLimits() {
   const plan = await getUserPlan();
@@ -39,7 +43,10 @@ export async function getUserPlanLimits() {
 }
 
 /**
- * Check if the current user can connect more calendars
+ * Determines whether the current user may add another connected calendar.
+ *
+ * @param currentCount - Number of calendars the user currently has connected
+ * @returns `true` if `currentCount` is less than the user's plan limit for connected calendars, `false` otherwise.
  */
 export async function canConnectMoreCalendars(
   currentCount: number,
@@ -63,8 +70,12 @@ const COUNT_HOST_BOOKINGS_QUERY = `count(*[
 ])`;
 
 /**
- * Get a host's plan by checking their Clerk subscription via Backend API
- * Used for public pages where we can't use auth()
+ * Determine a host's plan from their Clerk user metadata.
+ *
+ * Checks the user's public metadata for a `plan` field and returns `"pro"`, `"starter"`, or `"free"`. If the plan is not set or the Clerk lookup fails, `"free"` is returned.
+ *
+ * @param hostClerkId - The Clerk user ID of the host
+ * @returns The host's plan: `"pro"`, `"starter"`, or `"free"`
  */
 export async function getHostPlan(hostClerkId: string): Promise<PlanType> {
   try {
@@ -93,8 +104,10 @@ export type BookingQuotaStatus = {
 };
 
 /**
- * Get booking quota status for a host (by their public slug)
- * Used on public booking pages to check if host has exceeded their monthly quota
+ * Determine a host's monthly booking quota usage by their public slug.
+ *
+ * @param hostSlug - The host's public slug as shown in URLs
+ * @returns An object with `used` (bookings in the current month), `limit` (maximum bookings allowed for the host's plan), `remaining` (bookings left this month, minimum 0), `isExceeded` (`true` if `used` is greater than or equal to `limit`), and `plan` (the host's plan)
  */
 export async function getHostBookingQuotaStatus(
   hostSlug: string,
