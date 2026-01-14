@@ -42,16 +42,20 @@ export type BusyTime = {
 // ============================================================================
 
 /**
- * Compute available dates from host availability and existing bookings.
- * This is a pure function that doesn't fetch any data.
+ * Determine which dates in a range have at least one non-conflicting availability slot.
  *
- * @param availability - Host's availability slots
- * @param bookings - Existing confirmed bookings
- * @param startDate - Range start
- * @param endDate - Range end
- * @param slotDurationMinutes - Duration of each slot
- * @param busyTimes - Optional Google Calendar busy times
- * @returns Array of date strings in YYYY-MM-DD format
+ * For each date from `startDate` to `endDate` (inclusive), skips dates before today and checks
+ * whether the host's availability contains at least one slot of `slotDurationMinutes` that
+ * does not overlap existing `bookings` or `busyTimes`. Dates are formatted as `YYYY-MM-DD`
+ * in the local timezone.
+ *
+ * @param availability - Host availability slots with ISO start/end datetimes
+ * @param bookings - Existing confirmed bookings to treat as conflicts
+ * @param startDate - Range start (inclusive)
+ * @param endDate - Range end (inclusive)
+ * @param slotDurationMinutes - Slot length in minutes (default: 30)
+ * @param busyTimes - Optional external busy intervals to treat as conflicts
+ * @returns Array of dates (local timezone) formatted as `YYYY-MM-DD` that have at least one available slot
  */
 export function computeAvailableDates(
   availability: AvailabilitySlot[],
@@ -110,8 +114,16 @@ export function computeAvailableDates(
 }
 
 /**
- * Compute available time slots for a specific date.
- * This is a pure function that doesn't fetch any data.
+ * Compute all non-conflicting time slots available on a given date.
+ *
+ * Generates slots from the provided availability blocks constrained to the day's boundaries and the current time, excluding slots that overlap any existing bookings or busyTimes.
+ *
+ * @param availability - Availability intervals (each with `startDateTime`/`endDateTime`) to generate slots from
+ * @param bookings - Existing bookings (each with `startTime`/`endTime`) that block candidate slots
+ * @param date - Target date used to determine the day for which to compute slots
+ * @param slotDurationMinutes - Length of each slot in minutes; defaults to 30
+ * @param busyTimes - Additional blocked intervals (with `start` and `end` Dates) to exclude from results
+ * @returns An array of objects each containing `start` and `end` Date values for an available slot
  */
 export function computeAvailableSlots(
   availability: AvailabilitySlot[],
@@ -183,7 +195,15 @@ export function computeAvailableSlots(
 }
 
 /**
- * Check if a specific day has at least one available slot
+ * Determine whether the given day contains at least one time slot that is not blocked by bookings or busy times.
+ *
+ * @param availabilityForDate - Availability intervals that intersect the target day
+ * @param bookings - Existing confirmed bookings to treat as conflicts
+ * @param dayStart - Start of the day interval to consider (inclusive)
+ * @param dayEnd - End of the day interval to consider (inclusive)
+ * @param slotDurationMinutes - Duration in minutes of each candidate slot
+ * @param busyTimes - External busy intervals to treat as conflicts
+ * @returns `true` if at least one candidate slot of `slotDurationMinutes` within the provided availability is not overlapped by any booking or busy time, `false` otherwise.
  */
 function checkDayHasAvailableSlot(
   availabilityForDate: AvailabilitySlot[],
