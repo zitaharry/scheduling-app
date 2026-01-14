@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecd52661-3358-4495-ba84-384e2099b8d5" name="Changes" comment="Workspace fix">
-      <change afterPath="$PROJECT_DIR$/app/api/calendar/callback/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/api/calendar/connect/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/settings/account-manager.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/actions/calendar.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/availability.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/google-calendar.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sanity/lib/writeClient.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sanity/queries/bookings.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sanity/queries/meetingTypes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(app)/settings/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/settings/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sanity/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sanity/types.ts" afterDir="false" />
-    </list>
+    <list default="true" id="ecd52661-3358-4495-ba84-384e2099b8d5" name="Changes" comment="Workspace fix" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
