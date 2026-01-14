@@ -8,6 +8,12 @@ import { writeClient } from "@/sanity/lib/writeClient";
 import { client } from "@/sanity/lib/client";
 import { USER_WITH_CONNECTED_ACCOUNTS_QUERY } from "@/sanity/queries/users";
 
+/**
+ * Handle the Google OAuth callback by validating state and user, exchanging the authorization code for tokens, and creating or updating the user's Google connected account in Sanity, then redirecting to indicate success or error.
+ *
+ * @param request - Next.js request for the OAuth callback containing query parameters `code`, `state`, and optional `error`
+ * @returns A NextResponse that redirects to `/settings` with success or error query flags (e.g. `success=account_connected`, `success=account_updated`, `error=...`) or to `/` when the user is not authenticated
+ */
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const code = searchParams.get("code");

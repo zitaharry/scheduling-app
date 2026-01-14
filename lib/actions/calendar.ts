@@ -32,7 +32,9 @@ export type BusySlot = {
 // ============================================================================
 
 /**
- * Get the count of connected calendar accounts for the current user
+ * Get the number of calendar accounts connected to the currently authenticated user.
+ *
+ * @returns The number of connected calendar accounts; `0` if the user is unauthenticated or has no connected accounts.
  */
 export async function getUserConnectedAccountsCount(): Promise<number> {
   const { userId } = await auth();
@@ -43,7 +45,9 @@ export async function getUserConnectedAccountsCount(): Promise<number> {
 }
 
 /**
- * Fetch busy times from all connected Google Calendars
+ * Retrieve busy time slots across the user's connected Google Calendars between two dates.
+ *
+ * @returns An array of BusySlot objects where `start` and `end` are ISO 8601 strings, `accountEmail` is the calendar account's email, and `title` is the event title.
  */
 export async function getGoogleBusyTimes(
   startDate: Date,
@@ -72,7 +76,16 @@ export async function getGoogleBusyTimes(
 }
 
 /**
- * Disconnect a Google account
+ * Disconnects a connected Google calendar account for the authenticated user.
+ *
+ * Revokes the account's Google access token (if present), removes the account
+ * from the user's connected accounts in Sanity, and if the removed account
+ * was the default, promotes the first remaining connected account to default.
+ *
+ * @param accountKey - The unique `_key` of the connected account to remove
+ * @throws Error "Unauthorized" if the caller is not authenticated
+ * @throws Error "User not found" if the authenticated user record cannot be found
+ * @throws Error "Account not found" if no connected account matches `accountKey`
  */
 export async function disconnectGoogleAccount(
   accountKey: string,
@@ -118,7 +131,15 @@ export async function disconnectGoogleAccount(
 }
 
 /**
- * Set a connected account as the default for new bookings
+ * Mark a connected calendar account as the default for new bookings.
+ *
+ * Updates the user's connected accounts so the account identified by `accountKey`
+ * becomes the default; any other account previously marked default is cleared.
+ *
+ * @param accountKey - The Sanity `_key` of the connected account to set as default
+ * @throws Error "Unauthorized" if the caller is not authenticated
+ * @throws Error "User not found" if the authenticated user record cannot be loaded
+ * @throws Error "Account not found" if no connected account matches `accountKey`
  */
 export async function setDefaultCalendarAccount(
   accountKey: string,
@@ -156,8 +177,11 @@ export async function setDefaultCalendarAccount(
 }
 
 /**
- * Cancel a booking (Host only - requires authentication)
- * Deletes the Google Calendar event and removes the booking from Sanity.
+ * Cancels a booking by removing its associated Google Calendar event (if present) and deleting the booking document from Sanity.
+ *
+ * @param bookingId - The Sanity booking document ID to cancel
+ * @throws Error "Unauthorized" if the caller is not authenticated
+ * @throws Error "Booking not found" if no booking exists with the given ID
  */
 export async function cancelBooking(bookingId: string): Promise<void> {
   const { userId } = await auth();
@@ -200,8 +224,12 @@ export type BookingStatuses = {
 };
 
 /**
- * Clean up a cancelled booking by deleting the Google Calendar event and Sanity document.
- * Used for lazy deletion when we detect a booking has been cancelled.
+ * Delete the Google Calendar event (if present) and remove the corresponding booking document from Sanity.
+ *
+ * @param account - The connected Google account including access and refresh tokens
+ * @param bookingId - The Sanity booking document ID to delete
+ * @param googleEventId - The Google Calendar event ID to delete
+ * @param eventStillExists - Whether the calendar event is believed to still exist; if `true` the function will attempt to delete it using `account` tokens
  */
 async function cleanupCancelledBooking(
   account: ConnectedAccountWithTokens,
@@ -232,8 +260,17 @@ async function cleanupCancelledBooking(
 }
 
 /**
- * Get guest attendee statuses for multiple bookings from Google Calendar.
- * Google Calendar is the sole source of truth - we don't store status in Sanity.
+ * Retrieve attendee statuses for multiple bookings from Google Calendar.
+ *
+ * For each booking that has an associated Google event, queries the host's calendar to determine
+ * the guest's attendee status and whether the booking is cancelled. Cancelled bookings will be
+ * cleaned up by removing the calendar event and deleting the booking record.
+ *
+ * @param bookings - Array of bookings to check. Each item must include:
+ *   - `id`: booking document id
+ *   - `googleEventId`: the Google Calendar event id, or `null` if none
+ *   - `guestEmail`: the guest's email address as an attendee on the event
+ * @returns A record mapping booking `id` to `BookingStatuses` for bookings that have a `googleEventId`.
  */
 export async function getBookingAttendeeStatuses(
   bookings: Array<{
@@ -294,9 +331,15 @@ export async function getBookingAttendeeStatuses(
 }
 
 /**
- * Check which bookings are cancelled in Google Calendar (for public booking page).
- * Uses the host's calendar credentials to check event status.
- * Google Calendar is the sole source of truth.
+ * Determine which bookings are still active by using the host's Google Calendar as the source of truth.
+ *
+ * If `hostAccount` lacks valid tokens, all booking IDs are treated as active. For bookings with a `googleEventId`,
+ * the function checks attendee statuses in Google Calendar, performs lazy cleanup for cancelled events, and returns
+ * the set of booking IDs that are not cancelled.
+ *
+ * @param hostAccount - The host's connected Google account and tokens; may be `null`.
+ * @param bookings - Array of bookings to verify; each item must include `id`, `googleEventId`, and `guestEmail`.
+ * @returns A set containing the IDs of bookings that are considered active (not cancelled).
  */
 export async function getActivebookingIds(
   hostAccount: {
