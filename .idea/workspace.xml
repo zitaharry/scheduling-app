@@ -5,26 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecd52661-3358-4495-ba84-384e2099b8d5" name="Changes" comment="Workspace fix">
-      <change afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/calendar/components/availability-calendar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/calendar/components/calendar-toolbar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/calendar/components/copy-day-popover.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/calendar/components/share-link-dialog.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/calendar/hooks/use-calendar-events.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/calendar/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/calendar/lib/constants.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/calendar/lib/formats.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/calendar/lib/localizer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/refresh-button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/actions/availability.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/booking-utils.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/url.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(app)/bookings/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/bookings/bookings-list.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(app)/availability/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/availability/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(app)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/calendar/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/calendar/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sanity/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sanity/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +49,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "availability",
+    "git-widget-placeholder": "main",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "junie.onboarding.icon.badge.shown": "true",
@@ -134,6 +118,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Workspace fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Workspace fix" />
+    <MESSAGE value="Implement Calendar, Sharing Booking Links functionality, Workspace fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement Calendar, Sharing Booking Links functionality, Workspace fix" />
   </component>
 </project>
